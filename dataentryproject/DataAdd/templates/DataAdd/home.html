@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">DataEntry</a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item"><a class="nav-link" href="{% url 'add_product' %}">Add New Product</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">All Products</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'admin:login' %}">Admin Login</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-4">
+    <form method="GET">
+        <input type="text" name="search" class="form-control mb-3" placeholder="Search Product" value="{{ request.GET.search }}">
+    </form>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Sr. #</th>
+                <th>Customer Name</th>
+                <th>Product Name</th>
+                <th>Specification</th>
+                <th>Target Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.customer_name }}</td>
+                <td>{{ product.product_name }}</td>
+                <td>{{ product.specification }}</td>
+                <td>{{ product.target_price }}</td>
+                <td>
+                    <a href="{% url 'update_product' product.id %}" class="btn btn-info btn-sm">Edit</a>
+                    <a href="{% url 'delete_product' product.id %}" class="btn btn-danger btn-sm">Delete</a>
+                    <a href="{% url 'generate_pdf' product.id %}" class="btn btn-primary btn-sm">PDF</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'export_to_excel' %}" class="btn btn-success">Export to Excel</a>
+</div>
+
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

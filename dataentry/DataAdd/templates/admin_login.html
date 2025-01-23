@@ -1,0 +1,45 @@
+<!-- admin_login.html -->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+
+    <h1>Admin Login</h1>
+
+    <form method="POST" action="{% url 'admin_login' %}">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <input type="submit" value="Login">
+    </form>
+
+<style>
+        .return-home-btn {
+            background-color: #28a745;
+            color: white;
+            position: absolute;
+            right: 20px;
+        }
+    </style>
+      <div class="container mt-5">
+        <div class="d-flex justify-content-end mb-4">
+            <a href="{% url 'home' %}" class="btn return-home-btn">Return to Home</a>
+        </div>
+        <!-- Rest of your page content -->
+    </div>
+
+</body>
+</html>

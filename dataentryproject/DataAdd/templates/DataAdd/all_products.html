@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'add_product' %}">Add New Product</a></li>
+        </ul>
+    </nav>
+
+    <h1>All Products</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Sr. No.</th>
+                <th>Date</th>
+                <th>Product Name</th>
+                <th>Specification</th>
+                <th>Customer Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ product.date }}</td>
+                <td>{{ product.product_name }}</td>
+                <td>{{ product.specification }}</td>
+                <td>{{ product.customer_name }}</td>
+                <td>
+                    <a href="{% url 'edit_product' product.id %}">Edit</a> |
+                    <a href="{% url 'delete_product' product.id %}">Delete</a> |
+                    <a href="{% url 'generate_pdf' product.id %}">Generate PDF</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No products available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'export_excel' %}">Export to Excel</a>
+</body>
+</html>

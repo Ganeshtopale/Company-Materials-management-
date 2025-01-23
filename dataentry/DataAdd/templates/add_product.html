@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background-color: #343a40;
+        }
+        .navbar a {
+            color: #ffffff !important;
+        }
+        .return-home-btn {
+            background-color: #28a745;
+            color: white;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+        .form-table {
+            width: 100%;
+        }
+        .form-table th, .form-table td {
+            padding: 10px;
+            vertical-align: middle;
+        }
+        .form-table th {
+            text-align: right;
+            width: 30%;
+        }
+        .form-table td {
+            width: 70%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">Product Management</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'product_add' %}">Add New Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_products' %}">All Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'admin:login' %}">Admin Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1>Add Product</h1>
+
+        <!-- Return to Home Button -->
+        <div class="d-flex justify-content-end mb-4">
+            <a href="{% url 'home' %}" class="btn return-home-btn">Return to Home</a>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            <table class="form-table table table-bordered">
+                <tr>
+                    <th>Sr. No.</th>
+                    <td>{{ form.sr_no }}</td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td>{{ form.date }}</td>
+                </tr>
+                <tr>
+                    <th>Product Name</th>
+                    <td>
+
+<select name="product_name" id="product_name" required>
+    <option value="Industrial Muffle furnace">Industrial Muffle furnace</option>
+    <option value="Small Chamber Muffle Furnace">Small Chamber Muffle Furnace</option>
+    <option value="Medium Chamber Muffle Furnace">Medium Chamber Muffle Furnace</option>
+    <option value="Large Chamber Muffle Furnace">Large Chamber Muffle Furnace</option>
+    <option value="Multi-Purpose Muffle Furnace">Multi-Purpose Muffle Furnace</option>
+    <option value="Industrial Customised Oven">Industrial Customised Oven</option>
+    <option value="Industrial Heating Oven">Industrial Heating Oven</option>
+    <option value="Industrial Gas Oven">Industrial Gas Oven</option>
+    <option value="Industrial Drying Ovens">Industrial Drying Ovens</option>
+    <option value="Welding Electrode Drying Oven">Welding Electrode Drying Oven</option>
+    <option value="Powder Coating Batch Ovens">Powder Coating Batch Ovens</option>
+    <option value="Industrial Annealing oven">Industrial Annealing oven</option>
+    <option value="Industrial Sintering oven">Industrial Sintering oven</option>
+    <option value="Industrial Box Oven">Industrial Box Oven</option>
+    <option value="Aluminium Aging Oven">Aluminium Aging Oven</option>
+    <option value="Composite Curing Oven">Composite Curing Oven</option>
+    <option value="Custom Batch Oven">Custom Batch Oven</option>
+    <option value="Drop Bottom Batch Oven">Drop Bottom Batch Oven</option>
+    <option value="Heat Treat Oven">Heat Treat Oven</option>
+    <option value="Pit Batch Oven">Pit Batch Oven</option>
+    <option value="Small Batch Oven">Small Batch Oven</option>
+    <option value="Standard Top Load Oven">Standard Top Load Oven</option>
+    <option value="Air Sealed Overhead Trolley Conveyor Oven">Air Sealed Overhead Trolley Conveyor Oven</option>
+    <option value="Belt Conveyor Oven">Belt Conveyor Oven</option>
+    <option value="Carousel Conveyor Oven">Carousel Conveyor Oven</option>
+    <option value="Chain Conveyor Oven">Chain Conveyor Oven</option>
+    <option value="Custom Conveyor Oven">Custom Conveyor Oven</option>
+    <option value="Indexing Conveyor Oven">Indexing Conveyor Oven</option>
+    <option value="Spindle Chain Edge Conveyor Oven">Spindle Chain Edge Conveyor Oven</option>
+    <option value="Vertical Conveyor Oven">Vertical Conveyor Oven</option>
+    <option value="Trip Cure Oven">Trip Cure Oven</option>
+    <option value="Industrial Walk-In Oven">Industrial Walk-In Oven</option>
+    <option value="Custom Industrial Oven">Custom Industrial Oven</option>
+    <option value="Vacuum Heat Treatment furnace">Vacuum Heat Treatment furnace</option>
+    <option value="Brazing Vacuum Furnace">Brazing Vacuum Furnace</option>
+    <option value="Carburizing Vacuum Furnace">Carburizing Vacuum Furnace</option>
+    <option value="Hardening Vacuum Furnace">Hardening Vacuum Furnace</option>
+    <option value="Sintering Vacuum Furnace">Sintering Vacuum Furnace</option>
+    <option value="Surface Treatments Vacuum Furnace">Surface Treatments Vacuum Furnace</option>
+    <option value="Tempering Vacuum Furnace">Tempering Vacuum Furnace</option>
+    <option value="Pit Type furnace">Pit Type furnace</option>
+    <option value="Cyclone Electric Pit Furnace">Cyclone Electric Pit Furnace</option>
+    <option value="Cyclone Electric Retort Pit Nitriding Furnace">Cyclone Electric Retort Pit Nitriding Furnace</option>
+    <option value="Cyclone Gas-Fired Pit Furnace">Cyclone Gas-Fired Pit Furnace</option>
+    <option value="Cyclone Gas-Fired Retort Pit Nitriding Furnace">Cyclone Gas-Fired Retort Pit Nitriding Furnace</option>
+    <option value="Carburizing Pit Furnace">Carburizing Pit Furnace</option>
+    <option value="Nitriding Pit Furnace">Nitriding Pit Furnace</option>
+    <option value="Tempering Pit Furnace">Tempering Pit Furnace</option>
+    <option value="Rod Overbend Pit Furnace">Rod Overbend Pit Furnace</option>
+    <option value="Pit Furnace Companion Quench Tank">Pit Furnace Companion Quench Tank</option>
+    <option value="Industrial Box furnace">Industrial Box furnace</option>
+    <option value="Cyclone Box Furnace">Cyclone Box Furnace</option>
+    <option value="Gas-Fired Radiant Tube Box Furnace">Gas-Fired Radiant Tube Box Furnace</option>
+    <option value="Investment Cast Burn-Out Box Furnace">Investment Cast Burn-Out Box Furnace</option>
+    <option value="Polymer Burn-Off Box Furnace">Polymer Burn-Off Box Furnace</option>
+    <option value="Rod Overbend Box Furnace">Rod Overbend Box Furnace</option>
+    <option value="Silicon Carbide Element Box Furnace">Silicon Carbide Element Box Furnace</option>
+    <option value="Utility Box Furnace">Utility Box Furnace</option>
+    <option value="Industrial Horizontal Furnace">Industrial Horizontal Furnace</option>
+    <option value="Car Bottom Box Furnace">Car Bottom Box Furnace</option>
+    <option value="Electrical Control Panels">Electrical Control Panels</option>
+    <option value="PLC Control Panel, AC Drive Panel">PLC Control Panel, AC Drive Panel</option>
+    <option value="L.T. PCC Panel, MCC Panel, Mimic Panel">L.T. PCC Panel, MCC Panel, Mimic Panel</option>
+    <option value="Industrial APFC Panel, AMF & DG Panel">Industrial APFC Panel, AMF & DG Panel</option>
+    <option value="Power Distribution Panel">Power Distribution Panel</option>
+    <option value="Starter Panel DOL/Star Delta, Feeder Panel">Starter Panel DOL/Star Delta, Feeder Panel</option>
+    <option value="Industrial Metering Panel (Industrial Energy Meter Panel Board)">Industrial Metering Panel (Industrial Energy Meter Panel Board)</option>
+    <option value="Scada (Supervisory Control and Data Acquisition Control System)">Scada (Supervisory Control and Data Acquisition Control System)</option>
+    <option value="L.T. PCC Panel">L.T. PCC Panel</option>
+    <option value="MCC Control Panel">MCC Control Panel</option>
+    <option value="PLC Control Panel">PLC Control Panel</option>
+    <option value="Star Delta Panel">Star Delta Panel</option>
+    <option value="Industrial AMF Panel">Industrial AMF Panel</option>
+    <option value="AC Drive Panel">AC Drive Panel</option>
+    <option value="Electrical Feeder Panel">Electrical Feeder Panel</option>
+    <option value="Mimic Control Panel">Mimic Control Panel</option>
+    <option value="Electrical APFC Panel">Electrical APFC Panel</option>
+    <option value="Electric Aluminium Melting Furnace">Electric Aluminium Melting Furnace</option>
+    <option value="Electric Aluminium Melting Skelner">Electric Aluminium Melting Skelner</option>
+    <option value="Aluminium Melting Cum Holding furnace">Aluminium Melting Cum Holding furnace</option>
+    <option value="Fix Aluminium Electric LPDC Aluminium Holding furnace">Fix Aluminium Electric LPDC Aluminium Holding furnace</option>
+    <option value="Copper Melting furnace">Copper Melting furnace</option>
+    <option value="Brass Melting furnace">Brass Melting furnace</option>
+    <option value="Induction Gold Melting furnace">Induction Gold Melting furnace</option>
+    <option value="Industrial Crucible furnace">Industrial Crucible furnace</option>
+    <option value="Induction Silver Melting furnace">Induction Silver Melting furnace</option>
+    <option value="Induction Platinum Melting furnace">Induction Platinum Melting furnace</option>
+    <option value="Induction Melting furnace">Induction Melting furnace</option>
+    <option value="Metal Melting furnace">Metal Melting furnace</option>
+    <option value="Non Ferrous Melting furnace">Non Ferrous Melting furnace</option>
+    <option value="Reverberatory Aluminium Melting Furnace">Reverberatory Aluminium Melting Furnace</option>
+    <option value="Aluminium Melting Furnace">Aluminium Melting Furnace</option>
+    <option value="Industrial Front well Furnace">Industrial Front well Furnace</option>
+    <option value="Industrial Side well Furnace">Industrial Side well Furnace</option>
+    <option value="Industrial Stack Melter">Industrial Stack Melter</option>
+    <option value="Dry Hearth Melter">Dry Hearth Melter</option>
+    <option value="Aluminium Holding Furnace">Aluminium Holding Furnace</option>
+    <option value="Aluminium Launder System">Aluminium Launder System</option>
+    <option value="Electric Immersion Holding Furnace">Electric Immersion Holding Furnace</option>
+    <option value="Gas Fired Holding Furnace">Gas Fired Holding Furnace</option>
+    <option value="Gas Fired Stationary Crucible / Pot Melting Furnace">Gas Fired Stationary Crucible / Pot Melting Furnace</option>
+    <option value="Stationary Electric Crucible / Pot Melting Furnace">Stationary Electric Crucible / Pot Melting Furnace</option>
+    <option value="Tilting Electric Crucible / Pot Melting Furnace">Tilting Electric Crucible / Pot Melting Furnace</option>
+    <option value="Gas Fired Melting Furnace">Gas Fired Melting Furnace</option>
+    <option value="Tilting Gas Fired Melting Furnace">Tilting Gas Fired Melting Furnace</option>
+    <option value="Electric Melting Furnace">Electric Melting Furnace</option>
+    <option value="Aluminium Launder System">Aluminium Launder System</option>
+    <option value="Ladle Drying Oven">Ladle Drying Oven</option>
+    <option value="Electric Heat Treatment furnace">Electric Heat Treatment furnace</option>
+    <option value="Furnace Associated Equipment">Furnace Associated Equipment</option>
+    <option value="Refractory Materials">Refractory Materials</option>
+    <option value="Furnace Lining Services">Furnace Lining Services</option>
+    <option value="Industrial Moulds & Tools">Industrial Moulds & Tools</option>
+    <option value="Industrial Automation">Industrial Automation</option>
+    <option value="Electric Automation">Electric Automation</option>
+    <option value="Thermal Automation">Thermal Automation</option>
+    <option value="Thermal Automation (Custom Design)">Thermal Automation (Custom Design)</option>
+    <option value="Furnace Temperature Control">Furnace Temperature Control</option>
+    <option value="Thermal Automation (Thermocouples)">Thermal Automation (Thermocouples)</option>
+    <option value="Automation Controller & System Design">Automation Controller & System Design</option>
+    <option value="Electric Circuits & System">Electric Circuits & System</option>
+    <option value="Electric Panel Building">Electric Panel Building</option>
+    <option value="Heat Treatment Controller System">Heat Treatment Controller System</option>
+    <option value="Control Circuits Design & Building">Control Circuits Design & Building</option>
+    <option value="PLC Programming">PLC Programming</option>
+    <option value="Industrial Machines Automation">Industrial Machines Automation</option>
+    <option value="Design and Development">Design and Development</option>
+    <option value="Electrical Services">Electrical Services</option>
+    <option value="Power Distribution">Power Distribution</option>
+    <option value="Furnace Systems">Furnace Systems</option>
+</select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Specification</th>
+                    <td>{{ form.specification }}</td>
+                </tr>
+                <tr>
+                    <th>Customer Name</th>
+                    <td>{{ form.customer_name }}</td>
+                </tr>
+                <tr>
+                    <th>L1 Price</th>
+                    <td>{{ form.l1_price }}</td>
+                </tr>
+
+                <tr>
+                    <th>GST (%)</th>
+                    <td>{{ form.gst }}</td>
+                </tr>
+
+                <tr>
+                    <th>Gross Cost Value</th>
+                    <td>{{ form.gross_cost_value }}</td>
+                </tr>
+
+                <tr>
+                    <th>USD</th>
+                    <td>{{ form.usd }}</td>
+                </tr>
+                <tr>
+                    <th>Vendor 1 Name</th>
+                    <td>{{ form.vendor1_name }}</td>
+                </tr>
+                <tr>
+                    <th>Vendor 1 Price</th>
+                    <td>{{ form.vendor1_price }}</td>
+                </tr>
+                <tr>
+                    <th>Vendor 2 Name</th>
+                    <td>{{ form.vendor2_name }}</td>
+                </tr>
+                <tr>
+                    <th>Vendor 2 Price</th>
+                    <td>{{ form.vendor2_price }}</td>
+                </tr>
+                <tr>
+                    <th>Vendor 3 Name</th>
+                    <td>{{ form.vendor3_name }}</td>
+                </tr>
+                <tr>
+                    <th>Vendor 3 Price</th>
+                    <td>{{ form.vendor3_price }}</td>
+                </tr>
+                <tr>
+                    <th>Remarks</th>
+                    <td>{{ form.remarks }}</td>
+                </tr>
+            </table>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
